@@ -3,14 +3,12 @@
 #include "server.h"
 
 // paramètres de votre réseau WiFi
-// const char* ssid = "Esp32-SacroSaint-Wifi";
-// const char* password = "patate12";
-const char *ssid = "SacroSaint-Wifi";
-const char *password = "patate12";
+const char* ssid = "Esp32-SacroSaint-Wifi";
+const char* password = "patate12";
 
 // Set your Static IP address
-IPAddress local_IP(192, 168, 1, 2);
-IPAddress gateway(192, 168, 1, 1);
+IPAddress local_IP(192, 168, 0, 1);
+IPAddress gateway(192, 168, 0, 0);
 IPAddress subnet(255, 255, 255, 0);
 
 void setup()
@@ -21,16 +19,11 @@ void setup()
 
   // ------------------ Wifi ------------------
 
-  // WiFi.mode(WIFI_AP);
-  // WiFi.softAPConfig(local_IP, gateway, subnet);
-  // WiFi.softAP(ssid, password);
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(local_IP, gateway, subnet);
+  WiFi.softAP(ssid, password);
 
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-  }
+  Serial.println("WiFi connected");
 
   Serial.println("IP:");
   Serial.println(WiFi.localIP());
