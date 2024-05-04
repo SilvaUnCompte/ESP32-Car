@@ -1,29 +1,45 @@
 let right = 0, left = 0; let buf_right = 0, buf_left = 0; let speed = 0, angle_in_degrees = 0;
 setInterval(function sendDirection() {
-    let rapport = 2 * 100 / 90;
-    let sensibility = 15;
+    sensibility = 15;
+    ratio_speed = speed / 100;
 
-    if (angle_in_degrees < 90) {
-        right = angle_in_degrees * rapport - 100;
-        left = 100;
+    if (angle_in_degrees < 22.5 || angle_in_degrees > 337.5) {
+        right = 100*ratio_speed;
+        left = -25*ratio_speed;
     }
-    else if (angle_in_degrees < 180) {
-        left = 0 - ((angle_in_degrees - 90) * rapport - 100);
-        right = 100;
+    else if (angle_in_degrees >= 22.5 && angle_in_degrees < 67.5) {
+        right = 100*ratio_speed;
+        left = 0*ratio_speed;
     }
-    else if (angle_in_degrees < 270) {
-        right = 0 - ((angle_in_degrees - 180) * rapport - 100);
-        left = -100;
+    else if (angle_in_degrees >= 67.5 && angle_in_degrees < 112.5) {
+        right = 100*ratio_speed;
+        left = 100*ratio_speed;
+    }
+    else if (angle_in_degrees >= 112.5 && angle_in_degrees < 157.5) {
+        right = 0*ratio_speed;
+        left = 100*ratio_speed;
+    }
+    else if (angle_in_degrees >= 157.5 && angle_in_degrees < 202.5) {
+        right = -25*ratio_speed;
+        left = 100*ratio_speed;
+    }
+    else if (angle_in_degrees >= 202.5 && angle_in_degrees < 247.5) {
+        right = -0*ratio_speed;
+        left = -100*ratio_speed;
+    }
+    else if (angle_in_degrees >= 247.5 && angle_in_degrees < 295.5) {
+        right = -100*ratio_speed;
+        left = -100*ratio_speed;
     }
     else {
-        left = (angle_in_degrees - 270) * rapport - 100;
-        right = -100;
+        right = -100*ratio_speed;
+        left = -0*ratio_speed;
     }
 
-    if (Math.abs(buf_left - (left * speed / 100)) > sensibility || Math.abs(buf_right - (right * speed / 100)) > sensibility) {
+    if (left != buf_left || right != buf_right) {
 
-        buf_left = ((left * speed / 100) + 2 * buf_left) / 3;
-        buf_right = ((right * speed / 100) + 2 * buf_right) / 3;
+        buf_left = left;
+        buf_right = right;
 
         // Convert % to V for right motor (195 - 255)
         let v_left = 0; let v_right = 0;

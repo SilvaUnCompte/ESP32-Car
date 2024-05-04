@@ -43,7 +43,7 @@ void setupCamera()
     config.pixel_format = PIXFORMAT_JPEG;
 
     config.frame_size = FRAMESIZE_VGA; // QVGA|CIF|VGA|SVGA|XGA|SXGA|UXGA
-    config.jpeg_quality = 10;          // 0-63 ; plus bas = meilleure qualité
+    config.jpeg_quality = 30;          // 0-63 ; plus bas = meilleure qualité
     config.fb_count = 2;               // nombre de frame buffers
 
     // initialisation de la caméra

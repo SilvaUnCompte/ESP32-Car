@@ -26,7 +26,7 @@ void setup()
   Serial.println("WiFi connected");
 
   Serial.println("IP:");
-  Serial.println(WiFi.localIP());
+  Serial.println(WiFi.softAPIP());
 
   // ---------------- SPIFFS -----------------
 
