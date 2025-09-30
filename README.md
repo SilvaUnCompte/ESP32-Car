@@ -3,6 +3,10 @@
 ## Overview
 ESP32-Car is a project for controlling a small car using an ESP32 microcontroller. It features a web-based interface for real-time control and video streaming from an onboard camera. The project is built using PlatformIO and the Arduino framework, and is designed to run on the Upesy Wrover ESP32 board.
 
+<img width="250" alt="cover image" src="https://github.com/user-attachments/assets/1feb3e70-05d7-4749-9327-b0fc99f6da15" />
+<img width="250" alt="cover image" src="https://github.com/user-attachments/assets/4c77f30c-a44c-4376-ab1d-c6c6ef656037" />
+<img width="250" alt="image" src="https://github.com/user-attachments/assets/f966a0ae-13ae-42e6-b028-b9d7aa4c02d3" />
+
 ## Features
 - WiFi Access Point mode for direct connection
 - Real-time camera streaming using the ESP32-CAM
